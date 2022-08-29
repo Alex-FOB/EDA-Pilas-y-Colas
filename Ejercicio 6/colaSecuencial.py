@@ -32,10 +32,10 @@ class cola:
             self.__cant -= 1
             return x
     def recorrer(self): #revisar
+        contenido = []
         if(not self.vacia()):
-            i = self.__primer
-            j = 0
-            while j < self.__cant:
-                i = (i+1) % self.__max
-                self.__arreglo[i]
-                j += 1
+            for i in range(self.__cant):
+                cliente = self.suprimir()
+                if(cliente != -1):
+                    contenido.append(cliente)
+        return contenido
