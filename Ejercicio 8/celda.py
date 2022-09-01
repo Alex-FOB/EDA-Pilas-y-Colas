@@ -4,7 +4,7 @@ class Celda:
     def __init__(self, dato = None):
         self.__dato = dato
         self.__siguiente = None
-    def loadSiguiente(self, siguiente):
+    def setSiguiente(self, siguiente):
         self.__siguiente = siguiente
     def getSiguiente(self):
         return self.__siguiente
@@ -12,3 +12,5 @@ class Celda:
         self.__dato = dato
     def getDato(self):
         return self.__dato
+    def __str__(self):
+        return ''.format(self.__dato)

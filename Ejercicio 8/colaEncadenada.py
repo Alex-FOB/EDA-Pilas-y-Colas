@@ -1,29 +1,33 @@
 from celda import Celda
 
-class cola:
+class ColaE:
     __cant = None
     __primer = None 
     __ultimo = None
-    def __init__(self, cant = 0, primer = None, ultimo = None):
+    def __init__(self, cant = 0):
         self.__cant = cant
-        self.__primer = primer
-        self.__ultimo = ultimo
+        self.__primer = None
+        self.__ultimo = None
     def vacia(self):
         return self.__cant == 0
-    def insertar(self, dato):
+    def insertar(self, dato): #REVISAR
         aux = Celda(dato)
-        aux.loadSiguiente(None)
-        if(self.__ultimo == None):
+        #aux.setSiguiente(None)
+        if(self.__ultimo == None and self.__primer == None):
             self.__primer = aux
+            self.__cant += 1
         else:
-            self.__ultimo.loadSiguiente(aux)
+            if(self.__ultimo == None):
+                self.__ultimo = aux
+                self.__primer.setSiguiente(self.__ultimo)
+            self.__ultimo.setSiguiente(aux)
             self.__ultimo = aux
             self.__cant += 1
-        return self.__ultimo.getDato()
+            #print(self.__cant)
     def suprimir(self):
         if(self.vacia()):
             print('Cola vacia')
-            return -1
+            return -2
         else:
             aux = self.__primer
             x = self.__primer.getDato()
@@ -33,6 +37,18 @@ class cola:
                 self.__ultimo = None
             del(aux)
             return x
+    def recorrer(self):
+        cola = []
+        if(not self.vacia()):
+            i = 0
+            j = self.__cant
+            while i < j:
+                cont = self.suprimir()
+                if(cont != -2):
+                    cola.append(cont)
+                i += 1
+        return cola
     def getPrimer(self):
         return self.__primer
-    #def recorrer(self):
+    def getCant(self):
+        return self.__cant

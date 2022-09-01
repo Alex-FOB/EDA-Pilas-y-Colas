@@ -1,6 +1,6 @@
 import numpy as np
 
-class Cola:
+class ColaS:
     __arreglo = None
     __max = None
     __primer = 0
@@ -14,6 +14,8 @@ class Cola:
         self.__ultimo = 0
         self.__cant = 0
         self.__nombre = nombre
+    def llena(self):
+        return self.__cant == self.__max
     def vacia(self):
         return self.__cant == 0
     def insertar(self, dato):
